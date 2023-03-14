@@ -7,10 +7,11 @@ import { MoviesComponent } from '../movies/movies.component';
 import { TvComponent } from '../tv/tv.component';
 import { PeopleComponent } from '../people/people.component';
 import { AboutComponent } from '../about/about.component';
-import { NetworkComponent } from '../network/network.component';
 import { NotfoundComponent } from '../notfound/notfound.component';
 import { SiginComponent } from '../sigin/sigin.component';
 import { LoginComponent } from '../login/login.component';
+
+
 
 
 @NgModule({
@@ -20,10 +21,10 @@ import { LoginComponent } from '../login/login.component';
     TvComponent,
     PeopleComponent,
     AboutComponent,
-    NetworkComponent,
     NotfoundComponent,
     SiginComponent,
-    LoginComponent
+    LoginComponent,
+
   ],
   imports: [
     CommonModule

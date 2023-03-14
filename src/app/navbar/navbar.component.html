@@ -1,0 +1,45 @@
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <div class="flex items-center justify-between w-full">
+          <!-- start buttonIconSidenav&&nameWebsite -->
+          <div class="flex gap-1 items-center">
+            <!--button sidenav -->
+            <button   mat-icon-button (click)="sidenav.toggle();">
+              <mat-icon class="mat-18  ">menu</mat-icon>
+            </button>
+            <!--name website -->
+            <span>MOVIES</span>
+        </div>
+         <!-- end start buttonIconSidenav&&nameWebsite -->
+        <!--start nameComponentRouting -->
+        <div class="flex gap-5">
+          <a mat-button *ngFor="let x of nameC" [routerLink]="x.name">{{x.name}}</a>
+        </div>
+        <!--end nameComponentRouting -->
+        <!-- start search&btnDarkMode&fourIcon&login&signin -->
+        <div>
+          <span>anyy</span>
+        </div>
+     <!-- start search&btnDarkMode&fourIcon&login&signin -->
+      </div>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <!-- sidenav -->
+  <mat-sidenav-container >
+    <mat-sidenav #sidenav class="" mode="over" align="start" opened="false">
+        <mat-nav-list class="w-[200px] overflow-y-auto ">
+          <a mat-list-item *ngFor="let x of nameC" [routerLink]="x.name">{{x.name}}</a>
+
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="h-full">
+      <div class="">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+
+
