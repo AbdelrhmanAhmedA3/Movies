@@ -1,1 +1,242 @@
-<p>sigin works!</p>
+<div class="sm:h-[88vh] bg-cover flex justify-center items-center  bgParent py-7">
+  <div class="w-5/6  ">
+    <div class="hidden sm:block">
+      <mat-horizontal-stepper linear  #stepper class=" p-4 rounded-lg bg-[#ffffffd1] shadow-[0px_0px_50px_black]" labelPosition="bottom">
+        <mat-step [stepControl]="firstFormGroup" label="First Name">
+          <form class="mt-2.5" (ngSubmit)="formSubmit(firstFormGroup, 'firstName')" [formGroup]="firstFormGroup">
+            <mat-form-field>
+              <mat-label>First Name</mat-label>
+              <input #name  matInput placeholder="First Name" formControlName="first_name" >
+              <button  matSuffix mat-icon-button aria-label="Clear" (click)="name.value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+            <div *ngIf="firstFormGroup.get('first_name')?.errors && firstFormGroup.get('first_name')?.touched ">
+              <mat-error *ngIf="firstFormGroup.get('first_name')?.getError('required')">Please, set first name <i class="fa-solid fa-camera-movie"></i></mat-error>
+              <mat-error *ngIf="firstFormGroup.get('first_name')?.getError('pattern')">Please, You must type the first capital letter <i class="fa-solid fa-camera-movie"></i></mat-error>
+              <mat-error *ngIf="firstFormGroup.get('first_name')?.getError('minlength')">
+                Please, The number of written characters is less than 3 letters <i class="fa-solid fa-camera-movie"></i></mat-error>
+                <mat-error *ngIf="firstFormGroup.get('first_name')?.getError('maxlength')">
+                  Please, The number of written characters is more than 10 letters <i class="fa-solid fa-camera-movie"></i></mat-error>
+            </div>
+            <div>
+              <button color="primary" mat-button matStepperNext >Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Last Name">
+          <form class="mt-2.5" (ngSubmit)="formSubmit(secondFormGroup, 'secondName')" [formGroup]="secondFormGroup">
+            <mat-form-field>
+              <mat-label>Last Name</mat-label>
+              <input #Lname matInput formControlName="last_name" placeholder="Last Name">
+              <button  matSuffix mat-icon-button aria-label="Clear" (click)="Lname.value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+            <div *ngIf="secondFormGroup.get('last_name')?.errors && secondFormGroup.get('last_name')?.touched ">
+              <mat-error *ngIf="secondFormGroup.get('last_name')?.getError('required')">Please, set last name <i class="fa-solid fa-camera-movie"></i></mat-error>
+              <mat-error *ngIf="secondFormGroup.get('last_name')?.getError('pattern')">Please, You must type the first capital letter <i class="fa-solid fa-camera-movie"></i></mat-error>
+              <mat-error *ngIf="secondFormGroup.get('last_name')?.getError('minlength')">
+                Please, The number of written characters is less than 3 letters <i class="fa-solid fa-camera-movie"></i></mat-error>
+                <mat-error *ngIf="secondFormGroup.get('last_name')?.getError('maxlength')">
+                  Please, The number of written characters is more than 10 letters <i class="fa-solid fa-camera-movie"></i></mat-error>
+            </div>
+            <div>
+              <button color="warn" mat-button matStepperPrevious>Back</button>
+              <button color="primary" mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup" label="Current Age">
+          <form class="mt-2.5" (ngSubmit)="formSubmit(thirdFormGroup, 'age')" [formGroup]="thirdFormGroup">
+            <mat-form-field>
+              <mat-label>Current Age</mat-label>
+              <input #Aname matInput formControlName="age" placeholder="Current Age">
+              <button  matSuffix mat-icon-button aria-label="Clear" (click)="Aname.value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+            <div *ngIf="thirdFormGroup.get('age')?.errors && thirdFormGroup.get('age')?.touched ">
+              <mat-error *ngIf="thirdFormGroup.get('age')?.getError('required')">Please, set age number <i class="fa-solid fa-camera-movie"></i></mat-error>
+              <mat-error *ngIf="thirdFormGroup.get('age')?.getError('min')">
+                Please, your age less than 10 yaers,this age not allowed <i class="fa-solid fa-camera-movie"></i></mat-error>
+                <mat-error *ngIf="thirdFormGroup.get('age')?.getError('pattern')">
+                  Please,set your age <i class="fa-solid fa-camera-movie"></i></mat-error>
+            </div>
+            <div>
+              <button color="warn" mat-button matStepperPrevious>Back</button>
+              <button color="primary" mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="fourthFormGroup" label="Email">
+          <form class="mt-2.5" (ngSubmit)="formSubmit(fourthFormGroup, 'email')" [formGroup]="fourthFormGroup">
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input #Ename matInput formControlName="email" placeholder="Email">
+              <button  matSuffix mat-icon-button aria-label="Clear" (click)="Ename.value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+            <div *ngIf="fourthFormGroup.get('email')?.errors && fourthFormGroup.get('email')?.touched ">
+              <mat-error *ngIf="fourthFormGroup.get('email')?.getError('required')">Please, set email <i class="fa-solid fa-camera-movie"></i></mat-error>
+                <mat-error *ngIf="fourthFormGroup.get('email')?.getError('pattern')">
+                  Please,set abc...@gmail.com <i class="fa-solid fa-camera-movie"></i></mat-error>
+            </div>
+            <div>
+              <button color="warn" mat-button matStepperPrevious>Back</button>
+              <button color="primary" mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="fifthFormGroup" label="Password">
+          <form class="mt-2.5" (ngSubmit)="formSubmit(fifthFormGroup, 'password')" [formGroup]="fifthFormGroup">
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input  [type]="hide ? 'password' : 'text'" matInput formControlName="password" placeholder="Password">
+              <mat-icon  matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </mat-form-field>
+            <div *ngIf="fifthFormGroup.get('password')?.errors && fifthFormGroup.get('password')?.touched ">
+              <mat-error *ngIf="fifthFormGroup.get('password')?.getError('required')">Please, set password <i class="fa-solid fa-camera-movie"></i></mat-error>
+                <mat-error *ngIf="fifthFormGroup.get('password')?.getError('pattern')">
+                  Please,Make it contain the first letter 'uppercase' and the second 'lowercase' and contain a 'number'
+                   and a sign like this '#?!@$%^&*' <i class="fa-solid fa-camera-movie"></i></mat-error>
+            </div>
+            <div>
+              <button color="warn" mat-button matStepperPrevious>Back</button>
+              <button color="primary" mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <!-- done -->
+        <mat-step label="Done">
+          <p>You are now done.</p>
+          <div>
+            <button color="warn" mat-button matStepperPrevious>Back</button>
+            <button color="warn" mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+          <!-- done -->
+      </mat-horizontal-stepper>
+    </div>
+    <div class="sm:hidden">
+      <mat-vertical-stepper linear  #stepper class=" p-4 rounded-lg bg-[#ffffffd1] shadow-[0px_0px_50px_black]" labelPosition="bottom">
+        <mat-step [stepControl]="firstFormGroup" label="First Name">
+          <form class="mt-2.5" (ngSubmit)="formSubmit(firstFormGroup, 'firstName')" [formGroup]="firstFormGroup">
+            <mat-form-field>
+              <mat-label>First Name</mat-label>
+              <input #name  matInput placeholder="First Name" formControlName="first_name" >
+              <button  matSuffix mat-icon-button aria-label="Clear" (click)="name.value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+            <div *ngIf="firstFormGroup.get('first_name')?.errors && firstFormGroup.get('first_name')?.touched ">
+              <mat-error *ngIf="firstFormGroup.get('first_name')?.getError('required')">Please, set first name <i class="fa-solid fa-camera-movie"></i></mat-error>
+              <mat-error *ngIf="firstFormGroup.get('first_name')?.getError('pattern')">Please, You must type the first capital letter <i class="fa-solid fa-camera-movie"></i></mat-error>
+              <mat-error *ngIf="firstFormGroup.get('first_name')?.getError('minlength')">
+                Please, The number of written characters is less than 3 letters <i class="fa-solid fa-camera-movie"></i></mat-error>
+                <mat-error *ngIf="firstFormGroup.get('first_name')?.getError('maxlength')">
+                  Please, The number of written characters is more than 10 letters <i class="fa-solid fa-camera-movie"></i></mat-error>
+            </div>
+            <div>
+              <button color="primary" mat-button matStepperNext >Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" label="Last Name">
+          <form class="mt-2.5" (ngSubmit)="formSubmit(secondFormGroup, 'secondName')" [formGroup]="secondFormGroup">
+            <mat-form-field>
+              <mat-label>Last Name</mat-label>
+              <input #Lname matInput formControlName="last_name" placeholder="Last Name">
+              <button  matSuffix mat-icon-button aria-label="Clear" (click)="Lname.value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+            <div *ngIf="secondFormGroup.get('last_name')?.errors && secondFormGroup.get('last_name')?.touched ">
+              <mat-error *ngIf="secondFormGroup.get('last_name')?.getError('required')">Please, set last name <i class="fa-solid fa-camera-movie"></i></mat-error>
+              <mat-error *ngIf="secondFormGroup.get('last_name')?.getError('pattern')">Please, You must type the first capital letter <i class="fa-solid fa-camera-movie"></i></mat-error>
+              <mat-error *ngIf="secondFormGroup.get('last_name')?.getError('minlength')">
+                Please, The number of written characters is less than 3 letters <i class="fa-solid fa-camera-movie"></i></mat-error>
+                <mat-error *ngIf="secondFormGroup.get('last_name')?.getError('maxlength')">
+                  Please, The number of written characters is more than 10 letters <i class="fa-solid fa-camera-movie"></i></mat-error>
+            </div>
+            <div>
+              <button color="warn" mat-button matStepperPrevious>Back</button>
+              <button color="primary" mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup" label="Current Age">
+          <form class="mt-2.5" (ngSubmit)="formSubmit(thirdFormGroup, 'age')" [formGroup]="thirdFormGroup">
+            <mat-form-field>
+              <mat-label>Current Age</mat-label>
+              <input #Aname matInput formControlName="age" placeholder="Current Age">
+              <button  matSuffix mat-icon-button aria-label="Clear" (click)="Aname.value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+            <div *ngIf="thirdFormGroup.get('age')?.errors && thirdFormGroup.get('age')?.touched ">
+              <mat-error *ngIf="thirdFormGroup.get('age')?.getError('required')">Please, set age number <i class="fa-solid fa-camera-movie"></i></mat-error>
+              <mat-error *ngIf="thirdFormGroup.get('age')?.getError('min')">
+                Please, your age less than 10 yaers,this age not allowed <i class="fa-solid fa-camera-movie"></i></mat-error>
+                <mat-error *ngIf="thirdFormGroup.get('age')?.getError('pattern')">
+                  Please,set your age <i class="fa-solid fa-camera-movie"></i></mat-error>
+            </div>
+            <div>
+              <button color="warn" mat-button matStepperPrevious>Back</button>
+              <button color="primary" mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="fourthFormGroup" label="Email">
+          <form class="mt-2.5" (ngSubmit)="formSubmit(fourthFormGroup, 'email')" [formGroup]="fourthFormGroup">
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input #Ename matInput formControlName="email" placeholder="Email">
+              <button  matSuffix mat-icon-button aria-label="Clear" (click)="Ename.value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+            <div *ngIf="fourthFormGroup.get('email')?.errors && fourthFormGroup.get('email')?.touched ">
+              <mat-error *ngIf="fourthFormGroup.get('email')?.getError('required')">Please, set email <i class="fa-solid fa-camera-movie"></i></mat-error>
+                <mat-error *ngIf="fourthFormGroup.get('email')?.getError('pattern')">
+                  Please,set abc...@gmail.com <i class="fa-solid fa-camera-movie"></i></mat-error>
+            </div>
+            <div>
+              <button color="warn" mat-button matStepperPrevious>Back</button>
+              <button color="primary" mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="fifthFormGroup" label="Password">
+          <form class="mt-2.5" (ngSubmit)="formSubmit(fifthFormGroup, 'password')" [formGroup]="fifthFormGroup">
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input  [type]="hide ? 'password' : 'text'" matInput formControlName="password" placeholder="Password">
+              <mat-icon  matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </mat-form-field>
+            <div *ngIf="fifthFormGroup.get('password')?.errors && fifthFormGroup.get('password')?.touched ">
+              <mat-error *ngIf="fifthFormGroup.get('password')?.getError('required')">Please, set password <i class="fa-solid fa-camera-movie"></i></mat-error>
+                <mat-error *ngIf="fifthFormGroup.get('password')?.getError('pattern')">
+                  Please,Make it contain the first letter 'uppercase' and the second 'lowercase' and contain a 'number'
+                   and a sign like this '#?!@$%^&*' <i class="fa-solid fa-camera-movie"></i></mat-error>
+            </div>
+            <div>
+              <button color="warn" mat-button matStepperPrevious>Back</button>
+              <button color="primary" mat-button matStepperNext>Next</button>
+            </div>
+          </form>
+        </mat-step>
+        <!-- done -->
+        <mat-step label="Done">
+          <p>You are now done.</p>
+          <div>
+            <button color="warn" mat-button matStepperPrevious>Back</button>
+            <button color="warn" mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+          <!-- done -->
+      </mat-vertical-stepper>
+    </div>
+</div>
+</div>

@@ -1,0 +1,31 @@
+ @use "../../SCSS/variable" as *;
+ $trn:.3s;
+.bg-Toolbar{
+  background-image:$mColorLG-20;
+}
+.sActive{
+  background-image:$mColorLG-19;
+  border-radius: 5px;
+  box-shadow:  (0 4px 3px rgb(0 0 0 / 0.07)) ,(0 2px 2px rgb(0 0 0 / 0.06));;
+
+}
+.parentIS input::-webkit-input-placeholder{
+  opacity: 1;
+  transition: $trn;
+
+}
+.parentIS input:focus::-webkit-input-placeholder{
+  opacity: 0;
+}
+
+.heightC{
+  height: calc(100% - 24px);
+}
+@media only screen and ( min-width: 1024px) {
+#sidenav{
+  height: fit-content;
+}
+}
+
+
+

@@ -1,24 +1,66 @@
-  <mat-toolbar color="primary">
+  <mat-toolbar [class]="darkMode === true ? 'bg-slate-800 text-white' :'bg-Toolbar text-white'" color="">
     <mat-toolbar-row>
-      <div class="flex items-center justify-between w-full">
+      <div class="flex  items-center justify-between w-full">
           <!-- start buttonIconSidenav&&nameWebsite -->
-          <div class="flex gap-1 items-center">
+          <div class=" flex gap-1 items-center">
             <!--button sidenav -->
-            <button   mat-icon-button (click)="sidenav.toggle();">
-              <mat-icon class="mat-18  ">menu</mat-icon>
-            </button>
+            <div class="xl:hidden">
+              <button   mat-icon-button (click)="sidenav.toggle();">
+                <mat-icon class="mat-18  ">menu</mat-icon>
+              </button>
+            </div>
+            <div class="hidden xl:block">
+              <img class="w-16 shadow-[0px_0px_8px_black] mr-3 rounded-lg" src="../../assets/Images/Logo-4.jpg" alt="">
+            </div>
             <!--name website -->
-            <span>MOVIES</span>
+            <span class="cursor-pointer">MOVIES</span>
         </div>
          <!-- end start buttonIconSidenav&&nameWebsite -->
         <!--start nameComponentRouting -->
-        <div class="flex gap-5">
-          <a mat-button *ngFor="let x of nameC" [routerLink]="x.name">{{x.name}}</a>
+        <div *ngIf="hideLinksNav" class="gap-5 hidden xl:flex">
+          <a mat-button routerLinkActive="sActive" *ngFor="let x of nameC" [routerLink]="x.name">{{x.name}}</a>
         </div>
         <!--end nameComponentRouting -->
         <!-- start search&btnDarkMode&fourIcon&login&signin -->
-        <div>
-          <span>anyy</span>
+        <div class="flex items-center gap-5">
+          <!-- input -->
+          <div class="hidden lg:flex items-center parentIS">
+            <input id="inputSearch"
+            class="text-sm text-slate-500 bginput w-80 h-9 cursor-pointer outline-none rounded-l-lg drop-shadow-md px-1"
+            type="search" placeholder="Search...">
+            <label for="inputSearch" class="bg-[#4A00E0] px-1 flex h-9 items-center rounded-r-lg">
+              <mat-icon  class="mat-18 cursor-pointer">search</mat-icon>
+            </label>
+          </div>
+          <!-- input -->
+          <!-- icon brand link & darkMode-->
+          <div class=" gap-2 hidden sm:flex items-center">
+            <a *ngFor="let i of hrefIcon" [href]="i.href" target="_blank" [title]="i.title"
+            class="active:text-blue-900 text-lg text-white">
+              <i [class]="i.nameIcon"></i>
+            </a>
+            <div class="ml-2">
+              <mat-slide-toggle (click)="changeColor()" title="DarkMode" color="primary"></mat-slide-toggle>
+            </div>
+          </div>
+          <!-- icon brand link& darkMode-->
+          <!-- logIn&SignUp -->
+          <div class=" gap-2 hidden sm:flex">
+            <!-- login&sinin&logout -->
+          <div  *ngIf="!hideLinksNav">
+            <a mat-button class="cursor-pointer" routerLinkActive="sActive" routerLink="LOGIN">Log In</a>
+            <!-- <mat-icon>exit_to_app</mat-icon> -->
+          </div >
+            <div *ngIf="!hideLinksNav">
+            <a mat-button class="cursor-pointer" routerLinkActive="sActive" routerLink="SIGNIN">Sign Up</a>
+            <!-- <mat-icon>exit_to_app</mat-icon> -->
+          </div>
+          <div  *ngIf="hideLinksNav">
+            <a mat-button class="cursor-pointer" (click)="shareDataService.LogOut()"  >LogOut<mat-icon >exit_to_app</mat-icon></a>
+          </div>
+           <!-- login&signin&logout -->
+          </div>
+          <!-- logIn&SignUp -->
         </div>
      <!-- start search&btnDarkMode&fourIcon&login&signin -->
       </div>
@@ -26,20 +68,63 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <!-- sidenav -->
-  <mat-sidenav-container >
-    <mat-sidenav #sidenav class="" mode="over" align="start" opened="false">
-        <mat-nav-list class="w-[200px] overflow-y-auto ">
-          <a mat-list-item *ngFor="let x of nameC" [routerLink]="x.name">{{x.name}}</a>
+  <mat-sidenav-container class="">
+    <mat-sidenav #sidenav [autoFocus]="false" [class]="darkMode === true ? 'bg-slate-800 text-white' :'bg-Toolbar text-white'" mode="over" align="start" opened="false">
+      <div id="sidenav" class="m-3 lg:h-8 heightC   relative">
+        <!-- input search -->
+        <div class="flex lg:hidden  mb-14 parentIS">
+          <input id="inputSearch1"
+          class="text-sm text-slate-500 w-full  h-9 cursor-pointer outline-none rounded-l-lg drop-shadow-md px-1"
+          type="search" placeholder="Search...">
+          <label #inputSearch1 for="inputSearch1" class="bg-[#4A00E0] text-white px-1 flex h-9 items-center rounded-r-lg">
+            <mat-icon  class="mat-18 cursor-pointer">search</mat-icon>
+          </label>
+        </div>
+         <!-- input search -->
+         <!-- links -->
+          <div *ngIf="hideLinksNav" class="w-[200px]  my-10  text-white grid ">
+            <a class="mb-5 " mat-button color="white" (click)="sidenav.close();"
+            routerLinkActive="sActive" *ngFor="let x of nameC" [routerLink]="x.name">{{x.name}}</a>
 
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content class="h-full">
-      <div class="">
-        <router-outlet></router-outlet>
+          </div>
+          <div class=" gap-2 flex sm:hidden">
+            <!-- login&sinin&logout -->
+          <div  *ngIf="!hideLinksNav">
+            <a (click)="sidenav.toggle();" mat-button color="white" class="cursor-pointer " routerLinkActive="sActive" routerLink="LOGIN">Log In</a>
+            <!-- <mat-icon>exit_to_app</mat-icon> -->
+          </div >
+            <div *ngIf="!hideLinksNav">
+            <a (click)="sidenav.toggle();" mat-button color="white" class="cursor-pointer" routerLinkActive="sActive" routerLink="SIGNIN">Sign Up</a>
+            <!-- <mat-icon>exit_to_app</mat-icon> -->
+          </div>
+          <div class="w-full " *ngIf="hideLinksNav">
+            <a (click)="sidenav.toggle();" mat-button color="white" class="w-full cursor-pointer" (click)="shareDataService.LogOut()">LogOut<mat-icon >exit_to_app</mat-icon></a>
+          </div>
+           <!-- login&signin&logout -->
+          </div>
+   <!-- links -->
+   <!-- footer -->
+          <div class="flex gap-2 sm:hidden justify-between items-center absolute w-full bottom-0 p-4 ">
+            <!-- links icon -->
+           <div  class="flex gap-3 ">
+            <a *ngFor="let i of hrefIcon" [href]="i.href" target="_blank" [title]="i.title"
+            class="active:text-blue-900 text-lg text-white">
+              <i [class]="i.nameIcon"></i>
+            </a>
+
+           </div>
+            <!-- links icon -->
+           <div>
+            <mat-slide-toggle (click)="changeColor()" title="DarkMode" color="primary"></mat-slide-toggle>
+           </div>
+          </div>
+          <!-- footer -->
       </div>
+    </mat-sidenav>
+    <mat-sidenav-content [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''" >
+        <router-outlet  #o='outlet'></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
-
 
 
 

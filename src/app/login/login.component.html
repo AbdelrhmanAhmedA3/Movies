@@ -1,1 +1,44 @@
-<p>login works!</p>
+<div class="h-[88vh] bg-cover flex justify-center items-center  bgParent">
+  <div class="w-5/6  ">
+  <mat-horizontal-stepper linear  #stepper class="p-4 rounded-lg grid md:flex bg-[#ffffffd1] shadow-[0px_0px_50px_black]" labelPosition="bottom">
+    <mat-step [stepControl]="fourthFormGroup" label="Email">
+      <form class="mt-2.5" (ngSubmit)="formSubmit(fourthFormGroup, 'email')" [formGroup]="fourthFormGroup">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input #Ename matInput formControlName="email" placeholder="Email">
+          <button  matSuffix mat-icon-button aria-label="Clear" (click)="Ename.value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <div *ngIf="fourthFormGroup.get('email')?.errors && fourthFormGroup.get('email')?.touched ">
+          <mat-error *ngIf="fourthFormGroup.get('email')?.getError('required')">Please, set email <i class="fa-solid fa-camera-movie"></i></mat-error>
+            <mat-error *ngIf="fourthFormGroup.get('email')?.getError('pattern')">
+              Please,set abc...@gmail.com <i class="fa-solid fa-camera-movie"></i></mat-error>
+        </div>
+        <div>
+          <button color="primary" mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="fifthFormGroup" label="Password">
+      <form class="mt-2.5" (ngSubmit)="formSubmit(fifthFormGroup, 'password')" [formGroup]="fifthFormGroup">
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input  [type]="hide ? 'password' : 'text'" matInput formControlName="password" placeholder="Password">
+          <mat-icon  matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+        <div *ngIf="fifthFormGroup.get('password')?.errors && fifthFormGroup.get('password')?.touched ">
+          <mat-error *ngIf="fifthFormGroup.get('password')?.getError('required')">Please, set password <i class="fa-solid fa-camera-movie"></i></mat-error>
+            <mat-error *ngIf="fifthFormGroup.get('password')?.getError('pattern')">
+              Please,Make it contain the first letter 'uppercase' and the second 'lowercase' and contain a 'number'
+               and a sign like this '#?!@$%^&*' <i class="fa-solid fa-camera-movie"></i></mat-error>
+        </div>
+        <div>
+          <button color="warn" mat-button matStepperPrevious>Back</button>
+          <button color="primary"  mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</div>

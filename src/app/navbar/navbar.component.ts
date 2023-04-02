@@ -1,16 +1,30 @@
-import { Component } from '@angular/core';
-import {NameC} from './name-c'
-import  {trigger, transition, useAnimation}  from  "@angular/animations";
-import  {rotateCubeToLeft , rotateRoomToLeft ,rotateRoomToRight}  from  "ngx-router-animations";
+import { Component, Input } from '@angular/core';
+import {NameC , methodLink} from './name-c'
+import { slideInAnimation } from "./router-animation";
+import { ShareDataService } from "../shareData/share-data.service";
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
-  animations:  [
-    trigger('rotateCubeToLeft',  [ transition('* => *', useAnimation(rotateRoomToLeft))])
-    ]
+  animations:  [ slideInAnimation]
 })
-export class NavbarComponent {
+export class NavbarComponent   {
+  darkMode=false;
+  hideLinksNav=false;
+  constructor(public shareDataService:ShareDataService){}
+  ngOnInit(){
+    this.shareDataService.data.subscribe(
+      {
+        next:()=>{
+          if (this.shareDataService.data.getValue() != null) {
+            this.hideLinksNav = true;
+          }else{
+            this.hideLinksNav = false;
+          }
+        }
+      }
+    )
+  }
   nameC: NameC[]=
   [
     {name:'HOME'},
@@ -19,7 +33,18 @@ export class NavbarComponent {
     {name:'PEOPLE'},
     {name:'ABOUT'},
   ];
-  getState(outlet:any):any  {
-		return outlet.activatedRouteData.state;
-	}
+  hrefIcon:methodLink[]=
+  [
+    {href:'https://www.linkedin.com/in/abdelrhman-ahmed-fathi-b6048a21a',nameIcon:'fa-brands fa-linkedin-in',title:'linkedin'},
+    {href:'https://github.com/AbdelrhmanAhmedA3',nameIcon:'fa-brands fa-github',title:'github'},
+    {href:'https://www.facebook.com/profile.php?id=100072190332412',nameIcon:'fa-brands fa-facebook',title:'facebook'},
+    {href:'https://www.instagram.com/abdulrahmanahmed9696/',nameIcon:'fa-brands fa-instagram',title:'instagram'}
+  ]
+  changeColor(){
+    this.darkMode = !this.darkMode;
+    this.shareDataService.setDarkMode(this.darkMode);
+  }
+  hide(){
+    this.hideLinksNav = false
+  }
 }
