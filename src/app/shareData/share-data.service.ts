@@ -28,13 +28,11 @@ export class ShareDataService {
 
 saveUSerData(){
   this.data.next(JSON.parse(localStorage.getItem('formData') || '{}' ));
-  console.log(this.data);
-
 };
 LogOut(){
   localStorage.removeItem('formData');
   this.data.next(null);
-  this.Router.navigate(['/LOGIN'])
+  this.Router.navigate(['/login'])
 }
 
 }

@@ -18,7 +18,7 @@
          <!-- end start buttonIconSidenav&&nameWebsite -->
         <!--start nameComponentRouting -->
         <div *ngIf="hideLinksNav" class="gap-5 hidden xl:flex">
-          <a mat-button routerLinkActive="sActive" *ngFor="let x of nameC" [routerLink]="x.name">{{x.name}}</a>
+          <a color="white" class="uppercase" mat-button routerLinkActive="sActive" *ngFor="let x of nameC" [routerLink]="x.name">{{x.name}}</a>
         </div>
         <!--end nameComponentRouting -->
         <!-- start search&btnDarkMode&fourIcon&login&signin -->
@@ -40,7 +40,7 @@
               <i [class]="i.nameIcon"></i>
             </a>
             <div class="ml-2">
-              <mat-slide-toggle (click)="changeColor()" title="DarkMode" color="primary"></mat-slide-toggle>
+              <mat-slide-toggle  (click)="changeColor()" title="DarkMode" color="primary"></mat-slide-toggle>
             </div>
           </div>
           <!-- icon brand link& darkMode-->
@@ -48,11 +48,11 @@
           <div class=" gap-2 hidden sm:flex">
             <!-- login&sinin&logout -->
           <div  *ngIf="!hideLinksNav">
-            <a mat-button class="cursor-pointer" routerLinkActive="sActive" routerLink="LOGIN">Log In</a>
+            <a mat-button class="cursor-pointer " routerLinkActive="sActive" routerLink="login">Log In</a>
             <!-- <mat-icon>exit_to_app</mat-icon> -->
           </div >
             <div *ngIf="!hideLinksNav">
-            <a mat-button class="cursor-pointer" routerLinkActive="sActive" routerLink="SIGNIN">Sign Up</a>
+            <a mat-button class="cursor-pointer" routerLinkActive="sActive" routerLink="signin">Sign Up</a>
             <!-- <mat-icon>exit_to_app</mat-icon> -->
           </div>
           <div  *ngIf="hideLinksNav">
@@ -83,18 +83,18 @@
          <!-- input search -->
          <!-- links -->
           <div *ngIf="hideLinksNav" class="w-[200px]  my-10  text-white grid ">
-            <a class="mb-5 " mat-button color="white" (click)="sidenav.close();"
+            <a class="mb-5 " mat-button color="white" (click)="sidenav.close();" class="uppercase"
             routerLinkActive="sActive" *ngFor="let x of nameC" [routerLink]="x.name">{{x.name}}</a>
 
           </div>
           <div class=" gap-2 flex sm:hidden">
             <!-- login&sinin&logout -->
           <div  *ngIf="!hideLinksNav">
-            <a (click)="sidenav.toggle();" mat-button color="white" class="cursor-pointer " routerLinkActive="sActive" routerLink="LOGIN">Log In</a>
+            <a (click)="sidenav.toggle();" mat-button color="white" class="cursor-pointer " routerLinkActive="sActive" routerLink="login">Log In</a>
             <!-- <mat-icon>exit_to_app</mat-icon> -->
           </div >
             <div *ngIf="!hideLinksNav">
-            <a (click)="sidenav.toggle();" mat-button color="white" class="cursor-pointer" routerLinkActive="sActive" routerLink="SIGNIN">Sign Up</a>
+            <a (click)="sidenav.toggle();" mat-button color="white" class="cursor-pointer" routerLinkActive="sActive" routerLink="signin">Sign Up</a>
             <!-- <mat-icon>exit_to_app</mat-icon> -->
           </div>
           <div class="w-full " *ngIf="hideLinksNav">
@@ -115,7 +115,7 @@
            </div>
             <!-- links icon -->
            <div>
-            <mat-slide-toggle (click)="changeColor()" title="DarkMode" color="primary"></mat-slide-toggle>
+            <mat-slide-toggle   (click)="changeColor()" title="DarkMode" color="primary"></mat-slide-toggle>
            </div>
           </div>
           <!-- footer -->

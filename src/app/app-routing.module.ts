@@ -9,16 +9,18 @@ import { PeopleComponent } from './people/people.component';
 import { SiginComponent } from "./sigin/SiginComponent";
 import { TvComponent } from './tv/tv.component';
 import { AuthGuard } from './auth.guard';
+import { MoviesInfoComponent } from './movies-info/movies-info.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'SIGNIN',pathMatch:'full'},
-  {path:'SIGNIN',component:SiginComponent,data:{Animation:'SIGIN'}},
-  {path:'LOGIN',component:LoginComponent,data:{Animation:'LOGIN'}},
-  {path:'HOME',canActivate:[AuthGuard],component:HomeComponent,data:{Animation:'HOME'}},
-  {path:'ABOUT',canActivate:[AuthGuard],component:AboutComponent,data:{Animation:'ABOUT'}},
-  {path:'MOVIES',canActivate:[AuthGuard],component:MoviesComponent,data:{Animation:'MOVIES'}},
-  {path:'PEOPLE',canActivate:[AuthGuard],component:PeopleComponent,data:{Animation:'PEOPLE'}},
-  {path:'TV',canActivate:[AuthGuard],component:TvComponent,data:{Animation:'TV'}},
+  {path:'',redirectTo:'signin',pathMatch:'full'},
+  {path:'signin',component:SiginComponent,data:{Animation:'SIGIN'}},
+  {path:'login',component:LoginComponent,data:{Animation:'LOGIN'}},
+  {path:'moviesInfo/:id/:mediaType',canActivate:[AuthGuard],component:MoviesInfoComponent,data:{Animation:'moviesInfo'}},
+  {path:'home',canActivate:[AuthGuard],component:HomeComponent,data:{Animation:'HOME'}},
+  {path:'about',canActivate:[AuthGuard],component:AboutComponent,data:{Animation:'ABOUT'}},
+  {path:'movies',canActivate:[AuthGuard],component:MoviesComponent,data:{Animation:'MOVIES'}},
+  {path:'people',canActivate:[AuthGuard],component:PeopleComponent,data:{Animation:'PEOPLE'}},
+  {path:'tv',canActivate:[AuthGuard],component:TvComponent,data:{Animation:'TV'}},
   {path:'**',component:NotfoundComponent},
 
 ];

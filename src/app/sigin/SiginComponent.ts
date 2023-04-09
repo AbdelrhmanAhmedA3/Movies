@@ -3,6 +3,7 @@ import {FormBuilder, Validators , FormGroup, FormControl} from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { SiginUp } from "../models/siginUp";
+import { ShareDataService } from '../shareData/share-data.service';
 @Component({
   selector: 'app-sigin',
   templateUrl: './sigin.component.html',
@@ -21,7 +22,15 @@ export class SiginComponent {
   thirdFormGroup!:FormGroup;
   fourthFormGroup!:FormGroup;
   fifthFormGroup!:FormGroup;
-  constructor(private _formBuilder: FormBuilder , private roter:Router) {}
+  constructor(private _formBuilder: FormBuilder , private roter:Router, private ShareDataService:ShareDataService) {
+    this.ShareDataService.data.subscribe({
+      next:()=>{
+       if ( this.ShareDataService.data.getValue() != null) {
+          this.roter.navigate(['/home'])
+       }
+      }
+    })
+  }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -65,7 +74,7 @@ export class SiginComponent {
 
       if (this.formDataUserArray.length === 5 ) {
 
-        this.roter.navigate(['/LOGIN'])
+        this.roter.navigate(['/login'])
       }else{
         console.log('sorry');
 

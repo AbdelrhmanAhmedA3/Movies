@@ -17,7 +17,17 @@ export class LoginComponent {
   data: any ;
   fourthFormGroup!:FormGroup;
   fifthFormGroup!:FormGroup;
-  constructor(private _formBuilder: FormBuilder , public shareData:ShareDataService , private router:Router) {}
+  constructor(private _formBuilder: FormBuilder , public shareData:ShareDataService , private router:Router) {
+    this.shareData.data.subscribe(
+      {
+        next:()=>{
+          if (this.shareData.data.getValue() != null) {
+              this.router.navigate(['/home'])
+          }
+        }
+      }
+    )
+  }
   ngOnInit(){
     this. data =    JSON.parse(localStorage.getItem('formData') || '{}' )
 
@@ -32,6 +42,7 @@ export class LoginComponent {
       Validators.required,Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/)
     ]) ]
   });
+
 }
 formSubmit(val:FormGroup, fieldName: string){
 
@@ -47,7 +58,7 @@ formSubmit(val:FormGroup, fieldName: string){
         this.DataObject[Object.keys(this.DataObject)[1]] === this.data[Object.keys(this.data)[4]]) {
       console.log('will done');
       this.shareData.saveUSerData();
-      this.router.navigate(['/HOME'])
+      this.router.navigate(['/home'])
 
     }else{
       console.log('no');

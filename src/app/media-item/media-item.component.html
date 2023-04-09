@@ -1,0 +1,13 @@
+<div  class="cursor-pointer example-card h-[450px] roundedd bg-slate-400 relative overflow-hidden ">
+  <a [routerLink]="['/moviesInfo',item.id,item.media_type]">
+    <img *ngIf="item.backdrop_path" class="h-full w-full  roundedd" mat-card-image [src]="'https://image.tmdb.org/t/p/w500'+item.backdrop_path" alt="Photo of a Shiba Inu">
+    <img *ngIf="item.profile_path" class="h-full  w-full roundedd" mat-card-image [src]="'https://image.tmdb.org/t/p/w500'+item.profile_path" alt="Photo of a Shiba Inu">
+    <div class="absolute bg-slate-400 top-full w-full h-full roundedd p-3 grid justify-between">
+      <span class="block text-center font-bold text-2xl">{{item.title}} {{item.name}}</span>
+      <p>{{item.overview}}</p>
+      <span *ngIf="item.vote_average" class="  font-bold text-2xl flex justify-center items-center gap-3"><mat-icon>stars</mat-icon>{{item.vote_average.toFixed(1)}}</span>
+    </div>
+
+  </a>
+
+</div>

@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { NgImageSliderModule } from 'ng-image-slider';
+
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -18,7 +20,10 @@ import { LoginComponent } from './login/login.component';
 import { SiginComponent } from "./sigin/SiginComponent";
 
 
-import { MaterialModule } from './modules/material.module'
+import { MaterialModule } from './modules/material.module';
+import { MediaItemComponent } from './media-item/media-item.component';
+import { MoviesInfoComponent } from './movies-info/movies-info.component';
+import { SearchPipe } from './search.pipe'
 
 
 
@@ -37,13 +42,17 @@ import { MaterialModule } from './modules/material.module'
     NotfoundComponent,
     SiginComponent,
     LoginComponent,
+    MediaItemComponent,
+    MoviesInfoComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    NgImageSliderModule
 
   ],
   providers: [],

@@ -27,11 +27,11 @@ export class NavbarComponent   {
   }
   nameC: NameC[]=
   [
-    {name:'HOME'},
-    {name:'MOVIES'},
-    {name:'TV'},
-    {name:'PEOPLE'},
-    {name:'ABOUT'},
+    {name:'home'},
+    {name:'movies'},
+    {name:'tv'},
+    {name:'people'},
+    {name:'about'},
   ];
   hrefIcon:methodLink[]=
   [
@@ -41,6 +41,7 @@ export class NavbarComponent   {
     {href:'https://www.instagram.com/abdulrahmanahmed9696/',nameIcon:'fa-brands fa-instagram',title:'instagram'}
   ]
   changeColor(){
+
     this.darkMode = !this.darkMode;
     this.shareDataService.setDarkMode(this.darkMode);
   }

@@ -25,6 +25,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule} from '@angular/forms'
 const materials = [
   ReactiveFormsModule,
   MatBadgeModule,
@@ -51,7 +52,8 @@ MatStepperModule,
 MatTabsModule,
 MatToolbarModule,
 MatTooltipModule,
-MatTreeModule
+MatTreeModule,
+FormsModule
 ];
 @NgModule({
   imports: [materials],

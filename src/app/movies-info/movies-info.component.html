@@ -1,0 +1,44 @@
+<div  class="mb-2 p-4 h-[450px] overflow-hidden flex gap-5 text-white  ">
+  <div class=" w-[350px]">
+    <img  class="h-full w-full  rounded-[35px] shadow-lg"
+    [src]="'https://image.tmdb.org/t/p/w500'+itemDetails.backdrop_path" alt="Photo of a Shiba Inu">
+     <img *ngIf="itemDetails.profile_path" class="h-full  w-full rounded-[35px] shadow-lg"
+      [src]="'https://image.tmdb.org/t/p/w500'+itemDetails.profile_path" alt="Photo of a Shiba Inu">
+  </div>
+   <div [class]="ShareDataService.darkMode ? 'bg-slate-800' : 'bg-n'" class=" rounded-md top-full w-full h-full  p-3 grid justify-between ">
+    <span class="block font-bold text-2xl">{{itemDetails.title}} {{itemDetails.name}}</span>
+    <p class="w-6/12">
+      <span class="block text-2xl">Description:</span>
+      {{itemDetails.overview}}
+    </p>
+    <div class="flex justify-between">
+      <span *ngIf="itemDetails.vote_average" class="hover:text-blue-900 transition duration-150  text-2xl flex  items-center gap-3">
+        <mat-icon>stars</mat-icon>{{itemDetails.vote_average.toFixed(1)}}</span>
+      <span *ngIf="itemDetails.vote_count" class="hover:text-blue-900 transition duration-150  text-2xl flex  items-center gap-3">
+        <mat-icon>remove_red_eye</mat-icon>{{itemDetails.vote_count}}</span>
+        <span *ngIf="itemDetails.homepage" class="  flex items-center">
+          URL Film: <a  [href]="itemDetails.homepage" target="_blank" *ngIf="itemDetails.vote_count"
+          class="transition duration-150 focus:text-blue-800 gap-3"> {{ itemDetails.homepage}}</a>
+        </span>
+    </div>
+  </div>
+
+</div>
+<div  class="p-4">
+  <div [class]="ShareDataService.darkMode ? 'bg-slate-800' : ''" class="rounded-md grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 text-white p-3 gap-5">
+    <div *ngFor="let item of itemSimilar" >
+      <div (click)="getSimilar(item.id,mediaType)"  class="cursor-pointer example-card h-[450px] roundedd bg-slate-400 relative overflow-hidden animate__animated animate__shakeX">
+
+          <img *ngIf="item.backdrop_path" class="h-full w-full  roundedd" mat-card-image [src]="'https://image.tmdb.org/t/p/w500'+item.backdrop_path" alt="Photo of a Shiba Inu">
+          <img *ngIf="item.profile_path" class="h-full  w-full roundedd" mat-card-image [src]="'https://image.tmdb.org/t/p/w500'+item.profile_path" alt="Photo of a Shiba Inu">
+          <div class="absolute bg-slate-400 top-full w-full h-full roundedd p-3 grid justify-between">
+            <span class="block text-center font-bold text-2xl">{{item.title}} {{item.name}}</span>
+            <p>{{item.overview}}</p>
+            <span *ngIf="item.vote_average" class="  font-bold text-2xl flex justify-center items-center gap-3"><mat-icon>stars</mat-icon>{{item.vote_average.toFixed(1)}}</span>
+          </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
