@@ -1,28 +1,30 @@
-<div  class="mb-2 p-4 h-[450px] overflow-hidden flex gap-5 text-white  ">
-  <div class=" w-[350px]">
-    <img  class="h-full w-full  rounded-[35px] shadow-lg"
+<div  class="mb-2 p-4  overflow-hidden grid sm:flex gap-5 text-white  ">
+  <div class=" ">
+    <img  class="h-[400px]  rounded-[35px] shadow-lg"
     [src]="'https://image.tmdb.org/t/p/w500'+itemDetails.backdrop_path" alt="Photo of a Shiba Inu">
-     <img *ngIf="itemDetails.profile_path" class="h-full  w-full rounded-[35px] shadow-lg"
+     <img *ngIf="itemDetails.profile_path" class="h-[400px]   rounded-[35px] shadow-lg"
       [src]="'https://image.tmdb.org/t/p/w500'+itemDetails.profile_path" alt="Photo of a Shiba Inu">
   </div>
-   <div [class]="ShareDataService.darkMode ? 'bg-slate-800' : 'bg-n'" class=" rounded-md top-full w-full h-full  p-3 grid justify-between ">
+   <div [class]="ShareDataService.darkMode ? 'bg-slate-800' : 'bg-n'" class=" rounded-md top-full w-full   sm:h-[400] p-3 grid justify-between ">
     <span class="block font-bold text-2xl">{{itemDetails.title}} {{itemDetails.name}}</span>
     <p class="w-6/12">
       <span class="block text-2xl">Description:</span>
       {{itemDetails.overview}}
     </p>
-    <div class="flex justify-between">
+    <div class="flex justify-between gap-5">
       <span *ngIf="itemDetails.vote_average" class="hover:text-blue-900 transition duration-150  text-2xl flex  items-center gap-3">
         <mat-icon>stars</mat-icon>{{itemDetails.vote_average.toFixed(1)}}</span>
       <span *ngIf="itemDetails.vote_count" class="hover:text-blue-900 transition duration-150  text-2xl flex  items-center gap-3">
         <mat-icon>remove_red_eye</mat-icon>{{itemDetails.vote_count}}</span>
-        <span *ngIf="itemDetails.homepage" class="  flex items-center">
-          URL Film: <a  [href]="itemDetails.homepage" target="_blank" *ngIf="itemDetails.vote_count"
+        <div *ngIf="itemDetails.homepage" class="  flex items-center flex-wrap">
+          <div  >
+            URL Film:
+          </div>
+           <a  [href]="itemDetails.homepage" target="_blank" *ngIf="itemDetails.vote_count"
           class="transition duration-150 focus:text-blue-800 gap-3"> {{ itemDetails.homepage}}</a>
-        </span>
+        </div>
     </div>
   </div>
-
 </div>
 <div  class="p-4">
   <div [class]="ShareDataService.darkMode ? 'bg-slate-800' : ''" class="rounded-md grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 text-white p-3 gap-5">
