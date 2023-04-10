@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ShareDataService } from '../shareData/share-data.service';
 
 @Component({
   selector: 'app-people',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./people.component.scss']
 })
 export class PeopleComponent {
-
+constructor(public shareDataService:ShareDataService){}
 }

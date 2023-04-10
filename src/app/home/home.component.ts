@@ -153,16 +153,11 @@ constructor(public shareData:ShareDataService , private MoviesDbService:MoviesDb
         if (data.results != null) {
 
           this.ahmed = true
-          console.log(this.ahmed);
            this.trendingMovies = data.results;
            this.ahmed = false
-           console.log(this.ahmed);
         }else{
           this.ahmed = true
-          console.log(this.ahmed);
-
         }
-
         }
     });
     this.MoviesDbService.getTrending('tv').subscribe({
@@ -173,13 +168,8 @@ constructor(public shareData:ShareDataService , private MoviesDbService:MoviesDb
     });
     this.MoviesDbService.getTrending('all').subscribe({
       next:(data)=> this.trendingAll = data.results,
-      error:(msg)=> {
-        console.log('Error Getting Location: ', msg);
-      },
-      complete:()=>{
-        // console.log(this.trendingPeople);
-
-      }
+      error:(msg)=> { },
+      complete:()=>{ }
     });
 
   }

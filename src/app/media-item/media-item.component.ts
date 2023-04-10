@@ -10,7 +10,6 @@ export class MediaItemComponent {
   constructor(private matDaialog:MatDialog){}
 @Input() item:any;
 openDialog(data:any){
-  console.log(data.src);
 
   this.matDaialog.open(MediaItemComponent)
 }

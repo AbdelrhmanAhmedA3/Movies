@@ -56,23 +56,18 @@ formSubmit(val:FormGroup, fieldName: string){
 
     if (this.DataObject[Object.keys(this.DataObject)[0]] === this.data[Object.keys(this.data)[3]] &&
         this.DataObject[Object.keys(this.DataObject)[1]] === this.data[Object.keys(this.data)[4]]) {
-      console.log('will done');
       this.shareData.saveUSerData();
       this.router.navigate(['/home'])
 
     }else{
-      console.log('no');
 
     }
   }
 
-  // console.log(val.value.email);
 
   // if(val.value.email === this.email && val.value.password == this.password){
 
-  //   console.log('hoi');
   // }else{
-  //   console.log('no');
 
   // }
 

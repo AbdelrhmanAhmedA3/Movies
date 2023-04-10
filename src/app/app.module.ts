@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { NgImageSliderModule } from 'ng-image-slider';
 
@@ -24,6 +24,7 @@ import { MaterialModule } from './modules/material.module';
 import { MediaItemComponent } from './media-item/media-item.component';
 import { MoviesInfoComponent } from './movies-info/movies-info.component';
 import { SearchPipe } from './search.pipe'
+import { ApiKeyInterceptor } from './api-key.interceptor';
 
 
 
@@ -55,7 +56,13 @@ import { SearchPipe } from './search.pipe'
     NgImageSliderModule
 
   ],
-  providers: [],
+  providers: [
+    {
+    provide:HTTP_INTERCEPTORS,
+    useClass:ApiKeyInterceptor,
+    multi:true,
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

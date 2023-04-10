@@ -18,7 +18,8 @@
          <!-- end start buttonIconSidenav&&nameWebsite -->
         <!--start nameComponentRouting -->
         <div *ngIf="hideLinksNav" class="gap-5 hidden xl:flex">
-          <a color="white" class="uppercase" mat-button routerLinkActive="sActive" *ngFor="let x of nameC" [routerLink]="x.name">{{x.name}}</a>
+          <a color="white" class="uppercase" mat-button routerLinkActive="sActive" *ngFor="let x of nameC"
+          [routerLink]="x.name">{{x.name}}</a>
         </div>
         <!--end nameComponentRouting -->
         <!-- start search&btnDarkMode&fourIcon&login&signin -->
@@ -54,6 +55,16 @@
             <div *ngIf="!hideLinksNav">
             <a mat-button class="cursor-pointer" routerLinkActive="sActive" routerLink="signin">Sign Up</a>
             <!-- <mat-icon>exit_to_app</mat-icon> -->
+          </div>
+          <div  *ngIf="hideLinksNav">
+            <button  mat-button [matMenuTriggerFor]="menu">Setting <mat-icon>settings</mat-icon></button>
+            <mat-menu  #menu="matMenu">
+              <div class="grid">
+                <a mat-button routerLink="settings">Profile</a>
+                <a mat-button routerLink="settings/privacy">Privacy</a>
+                <a mat-button routerLink="settings/password">Password</a>
+              </div>
+            </mat-menu>
           </div>
           <div  *ngIf="hideLinksNav">
             <a mat-button class="cursor-pointer" (click)="shareDataService.LogOut()"  >LogOut<mat-icon >exit_to_app</mat-icon></a>
@@ -97,8 +108,30 @@
             <a (click)="sidenav.toggle();" mat-button color="white" class="cursor-pointer" routerLinkActive="sActive" routerLink="signin">Sign Up</a>
             <!-- <mat-icon>exit_to_app</mat-icon> -->
           </div>
-          <div class="w-full " *ngIf="hideLinksNav">
-            <a (click)="sidenav.toggle();" mat-button color="white" class="w-full cursor-pointer" (click)="shareDataService.LogOut()">LogOut<mat-icon >exit_to_app</mat-icon></a>
+          <div class="grid justify-center w-full">
+            <div class="w-full"  *ngIf="hideLinksNav">
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                  <mat-icon>dialpad</mat-icon>
+                  <span>Redial</span>
+                </button>
+                <button mat-menu-item disabled>
+                  <mat-icon>voicemail</mat-icon>
+                  <span>Check voice mail</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>notifications_off</mat-icon>
+                  <span>Disable alerts</span>
+                </button>
+              </mat-menu>
+            </div>
+            <div class="w-full " *ngIf="hideLinksNav">
+              <a (click)="sidenav.toggle();" mat-button color="white" class="w-full cursor-pointer" (click)="shareDataService.LogOut()">LogOut<mat-icon >exit_to_app</mat-icon></a>
+            </div>
+
           </div>
            <!-- login&signin&logout -->
           </div>

@@ -70,53 +70,19 @@ export class SiginComponent {
       Object.assign(DataObject, this.formDataUserArray[i]);
     };
       localStorage.setItem('formData',JSON.stringify(DataObject));
-      console.log(DataObject[Object.keys(DataObject)[4]]);
 
       if (this.formDataUserArray.length === 5 ) {
 
         this.roter.navigate(['/login'])
       }else{
-        console.log('sorry');
 
       };
     }else{
-      console.log("no");
 
     };
-    // const DataObject  = {};
-    // console.log(this.formDataUserArray);
-    // for(let i = 0; i < this.formDataUserArray.length; i++ ) {
-    //   Object.assign(DataObject, this.formDataUserArray[i]);
-    // }
-    // switch (fieldName) {
-    //   case 'firstName':
-    //     this.formDataUser.first_name = val.value.first_name
-    //   break;
-    //   case 'secondName':
-    //     this.formDataUser.last_name = val.value.last_name
 
-    //   break;
-    //   case 'age':
-    //     this.formDataUser.age = val.value.age
-
-    //   break;
-    //   case 'email':
-    //     this.formDataUser.email = val.value.email
-
-    //   break;
-    //   case 'password':
-    //     this.formDataUser.password = val.value.password
-        //   localStorage.setItem('formDataUser',JSON.stringify(this.formDataUser));
-        //  let x:any = localStorage.getItem('formDataUser')
-        //  console.log('formDataUser',JSON.parse(x));
-
-        // break;
-
-
-        // this.formDataUser.first_name =
 
       }
-      // console.log(this.formDataUser);
 
 }
 

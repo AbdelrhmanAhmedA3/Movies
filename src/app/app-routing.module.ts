@@ -21,12 +21,13 @@ const routes: Routes = [
   {path:'movies',canActivate:[AuthGuard],component:MoviesComponent,data:{Animation:'MOVIES'}},
   {path:'people',canActivate:[AuthGuard],component:PeopleComponent,data:{Animation:'PEOPLE'}},
   {path:'tv',canActivate:[AuthGuard],component:TvComponent,data:{Animation:'TV'}},
+  {path:'settings',canActivate:[AuthGuard],loadChildren:()=> import('./settings/settings.module').then((m)=>m.SettingsModule),data:{Animation:'TV'}},
   {path:'**',component:NotfoundComponent},
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
